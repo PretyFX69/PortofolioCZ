@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CyberZain Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ===== Body & Background ===== */
+body, html {
+  margin:0; padding:0;
+  font-family:'Arial',sans-serif;
+  background:#0b0c10;
+  color:#fff;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background:url('https://raw.githubusercontent.com/NdikzDatabase/Database/main/Database/1762559143736-x3crbj.jpg') center/cover no-repeat;
+  opacity:0.15;
+  z-index:-2;
+  filter:blur(6px);
+}
+
+/* ===== Rainbow / Neon Text Animation ===== */
+@keyframes rainbow {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+.rainbow-text{
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #00ff00, #ffff00, #ff0000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size:200% 200%;
+  animation: rainbow 4s linear infinite;
+  font-weight:bold;
+  font-size:32px;
+  margin:20px 0;
+  text-shadow:0 0 10px #00fff6;
+}
+
+/* ===== Main Profile Section ===== */
+.main-content{
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:center;
+  margin-top:80px; padding:20px; gap:20px;
+  text-align:center;
+}
+.logo-circle{
+  width:200px; height:200px; border-radius:50%;
+  overflow:hidden; box-shadow:0 0 30px #00fff6;
+  border:3px solid #00fff6;
+}
+.logo-circle img{ width:100%; height:100%; object-fit:cover; }
+
+/* ===== Typing SVG Centered ===== */
+.typing{
+  display:block;
+  margin:15px 0 25px;
+filter: drop-shadow(0 0 6px #00fff6);
+}
+
+/* ===== Stats Section ===== */
+.stats-container{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:25px;
+  margin-top:20px;
+}
+.stat-box{
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  padding:15px 25px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 0 15px #00fff6;
+  min-width:120px;
+  transition:0.3s;
+}
+.stat-number{
+  font-size:clamp(20px,5vw,32px);
+  font-weight:bold;
+  color:#00fff6;
+  text-shadow:0 0 5px #00fff6;
+}
+.stat-label{
+  font-size:14px;
+  color:#fff;
+  opacity:0.85;
+}
+.stat-box:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 0 25px #ff00ff;
+}
+
+/* ===== About Section ===== */
+#about{
+  max-width:800px; margin:50px auto;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(12px);
+  padding:25px 20px; border-radius:20px;
+  box-shadow:0 0 20px #00fff6;
+  line-height:1.8; text-align:left;
+  font-size:16px;
+}
+#about p{
+  margin-bottom:15px;
+  text-indent: 1.5em;
+}
+
+/* ===== Projects Section ===== */
+.projects-section{
+  max-width:1000px; margin:50px auto; padding:0 15px;
+}
+.projects-section h2{
+  text-align:center;
+  font-size:28px;
+  margin-bottom:30px;
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #00ff00, #ffff00, #ff0000);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 10px #00fff6;
+  animation: rainbow 4s linear infinite;
+}
+
+/* ===== Project Cards ===== */
+  .projects{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+  justify-content:center;
+  margin-top:20px;
+}
+.project-card{
+  width:90%; max-width:220px; height:auto;
+  border-radius:15px; background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px); box-shadow:0 0 15px #00fff6;
+  text-align:center; overflow:hidden; transition:0.3s;
+}
+.project-card img{
+  width:90%; height:180px; object-fit:cover;
+  margin:10px auto; display:block; border-radius:12px;
+  transition:0.3s;
+}
+.project-card span{
+  display:block; margin:10px 0; font-weight:bold; font-size:14px; color:#00fff6;
+  text-shadow:0 0 5px #00fff6;
+}
+.project-card:hover{
+  transform:translateY(-5px) scale(1.05);
+  box-shadow:0 0 25px #ff00ff;
+}
+.project-card:hover img{
+  transform:scale(1.05); filter:drop-shadow(0 0 8px #ff00ff);
+}
+
+/* ===== Contact Section ===== */
+.site-footer{
+  background: transparent; color:#00fff6; text-align:center;
+  padding:2rem 1rem; margin-top:0rem; 
+}
+.site-footer a{
+  margin:0 10px; color:#00fff6; font-size:22px; transition:0.3s;
+}
+.site-footer a:hover{ color:#ff00ff; transform:scale(1.2); }
+
+/* ===== Responsive ===== */
+@media(max-width:500px){
+  .logo-circle{ width:150px; height:150px; }
+  .rainbow-text{ font-size:24px; }
+  .typing{ width:100%; }
+  .project-card img{ height:160px; }
+  .project-card{ max-width:180px; }
+  #about{ font-size:14px; padding:20px; }
+  .stat-box{ padding:12px 18px; min-width:100px; }
+}
+/* ===== Hamburger Button ===== */
+.menu-btn{
+  position:fixed;
+  top:15px; right:15px;
+  background:rgba(0,0,0,0.6);
+  padding:12px 15px;
+  border-radius:12px;
+  box-shadow:0 0 12px #00fff6;
+  cursor:pointer;
+  z-index:9999;
+  transition:0.3s;
+}
+.menu-btn i{
+  font-size:22px;
+  color:#00fff6;
+}
+.menu-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 18px #ff00ff;
+}
+
+/* ===== Side Menu ===== */
+.side-menu{
+  position:fixed;
+  top:0; right:-200px;
+  width:200px; height:100%;
+  background:rgba(0,0,0,0.70);
+  backdrop-filter:blur(12px);
+  padding-top:80px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  transition:0.4s;
+  z-index:9998;
+}
+.side-menu a{
+  color:#00fff6;
+  font-size:18px;
+  text-decoration:none;
+  padding:10px 20px;
+  transition:0.3s;
+}
+.side-menu a:hover{
+  background:#00fff6;
+  color:#000;
+  border-radius:10px;
+}
+
+/* Menu active */
+.side-menu.active{
+  right:0;
+}
+.skill-box {
+  margin-bottom: 20px;
+}
+
+.skill-title {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #00fff6;
+  text-shadow: 0 0 6px #00fff6;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg,#00fff6,#ff00ff);
+  box-shadow: 0 0 10px #00fff6;
+  animation: grow 1.5s ease-out forwards;
+}
+
+@keyframes grow {
+  from { width: 0; }
+}
+</style>
+</head>
+<body>
+<body>
+  <!-- ===== Hamburger Menu (Fixed) ===== -->
+<div class="menu-btn" onclick="toggleMenu()">
+  <i class="fas fa-bars"></i>
+</div>
+
+<nav class="side-menu" id="sideMenu">
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#contact">Contact</a>
+</nav>
+<!-- Futuristic Welcome Text -->
+<div class="rainbow-text">😸 CyberZain Tech Community </div>
+
+<!-- Main Profile Section -->
+<div class="main-content">
+  <div class="logo-circle">
+    <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/%2B62%20857-0071-1112%2020251210_195520.jpg" alt="CyberZain Logo">
+  </div>
+  <footer id="contact" class="site-footer">
+  <p>Contact Me</p>
+  <a href="https://github.com/pretyfx69" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="https://tiktok.com/@prtyfx_nracin69" target="_blank"><i class="fab fa-tiktok"></i></a>
+  <a href="https://www.instagram.com/alwayspretyfx?igsh=MWt1NnZ3dzV2dmNlMg==" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://wa.me/6285700711112" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/alwyzprtyfx" target="_blank"><i class="fab fa-telegram"></i></a>
+
+</footer>
+  <img class="typing" src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=20&color=00fff6&duration=5000&pause=800&width=515&repeat=true&background=00000000&lines=Hai+Selamat+Datang+Di+Website+CyberZain👋;Perkenalkan+Nama+Saya:Zain+Suryo+Negoro+X-D;Disini+Saya+Akan+menampilkan+Suatu+Project;Project+Ini+Telah+Dibuat+Dengan+Pemograman" alt="Typing SVG"/>
+  <!-- Stats Section -->
+  <div class="stats-container">
+    <div class="stat-box">
+      <div class="stat-number">150+</div>
+      <div class="stat-label">Followers</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">10+</div>
+      <div class="stat-label">Projects</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Years Experience</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">5+</div>
+      <div class="stat-label">Techs</div>
+    </div>
+  </div>
+</div>
+<!-- About Me Section -->
+<div id="about">
+  <p>Halo, saya Zain, seorang pengembang front-end dan desainer grafis. Sejak kecil, saya selalu tertarik pada teknologi dan desain. Saya suka bereksperimen dengan berbagai tools dan platform untuk menciptakan sesuatu yang unik dan bermanfaat.</p>
+  <p>Saya mulai belajar web development sejak SMP, dan sejak itu saya terus meningkatkan skill dengan belajar sendiri, bereksperimen dengan proyek pribadi, dan mengikuti perkembangan teknologi terbaru. Visual Studio Code adalah alat utama saya, namun saya selalu mencoba tools baru untuk meningkatkan workflow saya.</p>
+  <p>Selain coding, saya juga menekuni desain grafis. Membuat logo, desain media sosial, dan ilustrasi menjadi bagian dari proses kreatif saya. Saya percaya kombinasi antara coding dan desain membuat hasil karya lebih interaktif dan menarik.</p>
+  <p>Saya saat ini bekerja sebagai freelancer, menggabungkan kreativitas, teknologi, dan problem-solving untuk membantu klien mencapai tujuan mereka. Saya selalu mengutamakan hasil yang profesional namun tetap ramah dan mudah dipahami.</p>
+</div>
+<!-- ===== Skills Section ===== -->
+<!-- Skills Section -->
+<div id="skills" style="max-width:800px; margin:50px auto; background:rgba(0,0,0,0.55); backdrop-filter:blur(12px); padding:25px; border-radius:20px; box-shadow:0 0 20px #00fff6;">
+  <h2 class="rainbow-text" style="font-size:26px;">My Skills</h2>
+
+  <div class="skill-box">
+    <div class="skill-title">HTML — 67%</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:67%;"></div></div>
+  </div>
+  <div class="skill-box">
+    <div class="skill-title">CSS — 79%</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:79%;"></div></div>
+  </div>
+
+  <div class="skill-box">
+    <div class="skill-title">JavaScript — 45%</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:45%;"></div></div>
+  </div>
+
+  <div class="skill-box">
+    <div class="skill-title">Python — 61%</div>
+    <div class="skill-bar"><div class="skill-fill" style="width:61%;"></div></div>
+  </div>
+</div>
+<!-- Projects Section -->
+<div id="projects" class="projects-section">
+  <h2>Project Yang Telah Saya Buat</h2>
+  </div>
+  <div class="projects">
+    <a href="https://coin-tracker-bice-kappa.vercel.app/" class="project-card" target="_blank">
+      <img src="https://image.thum.io/get/https://coin-tracker-bice-kappa.vercel.app/" alt="Coin Tracker">
+      <span>Server Pterodactyl</span>
+    </a>
+    <a href="https://pretyfx69.github.io/Music-CyberZain/" class="project-card" target="_blank">
+      <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251210_194955.jpg" alt="QR Code Generator">
+      <span>Website Music Play</span>
+    </a>
+    <a href="https://pretyfx69.github.io/Assistant-AI/" class="project-card" target="_blank">
+      <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251210_195400.jpg" alt="Color Code">
+      <span>CyberZain-(AI)</span>
+      </a>
+    <a href="https://coin-tracker-bice-kappa.vercel.app/" class="project-card" target="_blank">
+      <img src="https://image.thum.io/get/https://coin-tracker-bice-kappa.vercel.app/" alt="Coin Tracker">
+      <span>Server Pterodactyl</span>
+    </a>
+</div>
+</div>
+  <footer class="site-footer">
+  <p>Supported Programming</p>
+
+<a><i class="fab fa-python"></i></a>
+<a><i class="fab fa-php"></i></a>
+<a><i class="fab fa-java"></i></a>
+<a><i class="fab fa-html5"></i></a>
+<a><i class="fab fa-css3-alt"></i></a>
+<a><i class="fab fa-js"></i></a>
+<a><i class="fab fa-gitlab"></i></a>
+<a><i class="fab fa-stack-overflow"></i></a>
+<a><i class="fab fa-bitbucket"></i></a>
+<a><i class="fab fa-laravel"></i></a>
+<a><i class="fab fa-vuejs"></i></a>
+<a><i class="fab fa-angular"></i></a>
+<a><i class="fab fa-react"></i></a>
+<a><i class="fab fa-linux"></i></a>
+<a><i class="fab fa-d-and-d"></i></a>
+<a><i class="fab fa-node-js"></i></a>
+<a><i class="fas fa-bug"></i></a>
+<p> &copy; 2025 Development Cyberzain. All right reserved</p> 
+</footer>
+</body>
+<script>
+function toggleMenu(){
+  document.getElementById("sideMenu").classList.toggle("active");
+}
+</script>
+</html>
