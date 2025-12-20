@@ -127,41 +127,86 @@ filter: drop-shadow(0 0 6px #00fff6);
   animation: rainbow 4s linear infinite;
 }
 
-/* ===== Project Cards ===== */
-  .projects{
-  display:flex;
-  flex-wrap:wrap;
-  gap:20px;
-  justify-content:center;
-  margin-top:20px;
-}
-.project-card{
-  width:90%; max-width:220px; height:auto;
-  border-radius:15px; background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(12px); box-shadow:0 0 15px #00fff6;
-  text-align:center; overflow:hidden; transition:0.3s;
-}
-.project-card img{
-  width:90%; height:180px; object-fit:cover;
-  margin:10px auto; display:block; border-radius:12px;
-  transition:0.3s;
-}
-.project-card span{
-  display:block; margin:10px 0; font-weight:bold; font-size:14px; color:#00fff6;
-  text-shadow:0 0 5px #00fff6;
-}
-.project-card:hover{
-  transform:translateY(-5px) scale(1.05);
-  box-shadow:0 0 25px #ff00ff;
-}
-.project-card:hover img{
-  transform:scale(1.05); filter:drop-shadow(0 0 8px #ff00ff);
+/* ===== Projects Slider (Horizontal Scroll) ===== */
+.projects {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  padding: 15px 10px 20px;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
 }
 
+/* Scrollbar (opsional, biar rapi) */
+.projects::-webkit-scrollbar {
+  height: 6px;
+}
+.projects::-webkit-scrollbar-thumb {
+  background: #00fff6;
+  border-radius: 10px;
+}
+.projects::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Project Card */
+.project-card {
+  flex-shrink: 0;              /* WAJIB */
+  width: 220px;                /* Lebar card */
+  scroll-snap-align: start;    /* Auto snap */
+  border-radius: 15px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 15px #00fff6;
+  text-align: center;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+/* Image */
+.project-card img {
+  width: 90%;
+  height: 160px;
+  object-fit: cover;
+  margin: 10px auto;
+  display: block;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+/* Title */
+.project-card span {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+  font-size: 14px;
+  color: #00fff6;
+  text-shadow: 0 0 5px #00fff6;
+}
+
+/* Hover Effect */
+.project-card:hover {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 0 25px #ff00ff;
+}
+.project-card:hover img {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px #ff00ff);
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .project-card {
+    width: 180px;
+  }
+  .project-card img {
+    height: 140px;
+  }
+}
 /* ===== Contact Section ===== */
 .site-footer{
   background: transparent; color:#00fff6; text-align:center;
-  padding:2rem 1rem; margin-top:0rem; 
+  padding:0rem 0.5rem; margin-top:0rem; 
 }
 .site-footer a{
   margin:0 10px; color:#00fff6; font-size:22px; transition:0.3s;
@@ -259,6 +304,62 @@ filter: drop-shadow(0 0 6px #00fff6);
 @keyframes grow {
   from { width: 0; }
 }
+  .apk-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 65vh; /* scrollable list */
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.apk-list::-webkit-scrollbar {
+  width: 6px;
+}
+.apk-list::-webkit-scrollbar-thumb {
+  background: #00fff6;
+  border-radius: 10px;
+}
+.apk-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.apk-item {
+  display:flex;align-items:center;gap:15px;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);padding:15px 5px;border-radius:14px;
+}
+
+.apk-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.apk-item .apk-info b {
+  color: #00fff6;
+  display: block;
+}
+.apk-item .apk-info small {
+  opacity: 0.8;
+  font-size: 12px;
+}
+
+/* Modal Scroll & Style */
+#apkModal {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#apkModal div {
+  overflow-y:auto;
+  max-height:80vh;
+}
 </style>
 </head>
 <body>
@@ -269,10 +370,11 @@ filter: drop-shadow(0 0 6px #00fff6);
 </div>
 
 <nav class="side-menu" id="sideMenu">
+ <a href="#contact">Contact</a>
   <a href="#about">About</a>
+    <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#contact">Contact</a>
+   <a href="#Download">Download Apk</a>
 </nav>
 <!-- Futuristic Welcome Text -->
 <div class="rainbow-text">😸 Tech Community </div>
@@ -341,8 +443,8 @@ filter: drop-shadow(0 0 6px #00fff6);
   <div class="skill-box">
     <div class="skill-title">Python — 61%</div>
     <div class="skill-bar"><div class="skill-fill" style="width:61%;"></div></div>
+    </div>
   </div>
-</div>
 <!-- Projects Section -->
 <div id="projects" class="projects-section">
   <h2>Project Yang Telah Saya Buat</h2>
@@ -365,6 +467,114 @@ filter: drop-shadow(0 0 6px #00fff6);
       <span>Beli Nomer kosong</span>
     </a>
 </div>
+</div>
+<section id="apk-download" style="max-width:900px;margin:60px auto;padding:20px;">
+  <h2 id="Download" class="rainbow-text" style="font-size:26px;text-align:center;">Download Mod Apk</h2>
+  
+  <!-- Search Bar -->
+  <input type="text" id="searchApk" placeholder="Cari aplikasi..." onkeyup="searchAPK()"
+  style="width:90%;padding:12px;border-radius:12px;border:none;outline:none;background:rgba(0,0,0,0.6);color:#00fff6;box-shadow:0 0 12px #00fff6;margin-bottom:15px;">
+
+  <!-- APK List (Scrollable) -->
+  <div id="apkList" style="display:flex;flex-direction:column;gap:15px;max-height:65vh;overflow-y:auto;padding-right:6px;">
+    
+    <!-- Termux -->
+    <div class="apk-item" data-name="termux">
+      <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/icon_7jMZ7XD80oeucmGEaTwktIRZexLtGWvJfKdVD6Wu2SI%3D.png" alt="Termux">
+      <div style="flex:1;">
+        <div style="font-weight:bold;color:#00fff6;">Termux</div>
+        <div style="font-size:12px;opacity:0.8;">Versi 0.119.0-beta.3 • 109 MB</div>
+      </div>
+      <a download style="color:#00fff6;font-size:20px;"><i class="fas fa-download" onclick="autoDownload('https://f-droid.org/repo/com.termux_1022.apk')"></i></a>
+      <i class="fas fa-circle-info" onclick="openInfo(
+       'Termux',
+       'versi 0.119.0‑beta.3:\n\n- Stabilitas layar penuh: Tampilan lebih stabil saat orientasi berubah.\n\n- Dukungan 32‑bit ARM: Bisa berjalan di HP lama dengan arsitektur 32‑bit.\n\n- Input keyboard/d‑pad lebih responsif: Interaksi lancar dengan keyboard fisik atau kontrol d‑pad.\n\n- Bootstrap diperbarui: Komponen dasar Linux di Termux lebih segar dan stabil.\n\nVersi ini fokus pada stabilitas dan kompatibilitas, bukan fitur grafis baru.')"
+        style="cursor:pointer;font-size:20px;color:#ff00ff;"></i>
+    </div>
+
+    <!-- GB WhatsApp -->
+    <div class="apk-item" data-name="gbwhatsapp">
+      <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/gbwa-mas-apk.png" alt="GbWhatsApp">
+      <div style="flex:1;">
+        <div style="font-weight:bold;color:#00fff6;">GbWhatsApp</div>
+        <div style="font-size:12px;opacity:0.8;">Versi 2.25.28.79 • 112 MB</div>
+      </div>
+      <a download style="color:#00fff6;font-size:20px;"><i class="fas fa-download" onclick="autoDownload('https://upfileapp.9aleh.com/file/2024/gbact/GBWhatsApp_Mas_v24.35.apk')"></i></a>
+      <i class="fas fa-circle-info" onclick="openInfo(
+  'GbWhatsApp',
+  'Versi 2.25.28.79:\n\n- Penambahan fitur Anti-Ban untuk mengurangi risiko akun diblokir.\n- Opsi privasi lebih lengkap seperti sembunyikan centang biru, last seen, dan status typing.\n- Tampilan UI dan tema diperbarui agar lebih menarik dan bisa dikustomisasi.\n- Pengiriman media diperbesar dengan kualitas lebih baik.\n- Perbaikan bug dan peningkatan stabilitas aplikasi.\n\nCatatan:\nGB WhatsApp adalah aplikasi tidak resmi sehingga tetap memiliki risiko keamanan dan banned akun.'
+)"
+        style="cursor:pointer;font-size:20px;color:#ff00ff;"></i>
+    </div>
+
+    <!-- CapCut Premium -->
+    <div class="apk-item" data-name="capcut premium">
+      <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/IMG-20251219-WA0004.jpg" alt="CapCut Premium">
+      <div style="flex:1;">
+        <div style="font-weight:bold;color:#00fff6;">CapCut Premium</div>
+        <div style="font-size:12px;opacity:0.8;">Versi 15.8.0 • 298.46 MB</div>
+      </div>
+      <a download style="color:#00fff6;font-size:20px;"><i class="fas fa-download" onclick="autoDownload('https://download2435.mediafire.com/hez2zyi5xi6gymrFM7-JG917Ha7bTMmB8rg0nlIcSEwpSBjOjEsY9eG3Srf3U9BySyrrhLtI9iWeTqZVFvPtNpzChXxM2tiLXf-S2okMlhsMUy6d6LrmiUOHZXEdpUusKny3oEOHaL6LAQyb2EJXogaVqoGygazFSOfVV1covps/4nvcb6oq7h94trz/CapCutPro+v17.5.0_MOD.apk')"></i></a>
+      <i class="fas fa-circle-info" onclick="openInfo('CapCut Premium','Versi 15.8.0: \n\n- No Watermark saat ekspor video, hasil akhir lebih bersih dan profesional.\n- AI-powered tools diperluas seperti auto caption, voice detection, dan auto translate.\n- Alat Remove Filler Words untuk hapus pengulangan suara dengan cepat.\n- AI Clip Shorts untuk otomatis bikin video pendek dari konten panjang.\n- Auto Reframe untuk ubah orientasi video sambil menjaga fokus objek utama.\n- Lebih banyak efek, transisi, stickers & font premium eksklusif.\n- Opsi kualitas ekspor lebih tinggi termasuk resolusi 4K Ultra HD.\n- Fitur kolaborasi real-time untuk tim (hanya di paket tertentu).\n\nCatatan: Fitur premium ini Telah Di Modifikasi')"
+        style="cursor:pointer;font-size:20px;color:#ff00ff;"></i>
+    </div>
+    <!-- Youtube Premium -->
+    <div class="apk-item" data-name="youtube premium">
+      <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/b157c8590442c3061f1d050a522a0dbb_icon.png" alt="GbWhatsApp">
+      <div style="flex:1;">
+        <div style="font-weight:bold;color:#00fff6;">Youtube Premium</div>
+        <div style="font-size:12px;opacity:0.8;">Versi 19.47.53 • 164.24 MB</div>
+      </div>
+      <a download style="color:#00fff6;font-size:20px;"><i class="fas fa-download" onclick="autoDownload('https://download2442.mediafire.com/6lzr8ao4jslgsv8i1C7xKyjZrFQKj2k_GfOy_xznHVQwk24qFwEewkWj7li8peE8BDRxjmH3YEVVwRaxYiMoqIsbg-lxDvTbtqMVLBovmUCOnDRwuNYB4HMO58NYaxfn7mP7OMo4CAK-olnSJdRkov8KdfzJgA2EiQcAvCTOj20/13drlmrbsy0yhk8/RVX+App.zip')"></i></a>
+      <i class="fas fa-circle-info" onclick="openInfo(
+       'YouTube Vanced',
+       'Versi 19.47.53:\n\nPassword File:HALO\n\n- Ad-free: Bebas iklan saat menonton video.\n- Background Playback: Bisa putar video di background.\n- Tema Gelap/Black: Dark mode & Black theme.\n- Override Resolution: Paksa resolusi hingga Full HD/4K.\n- Swipe Controls: Geser untuk atur volume & brightness.\n- Pinch to Zoom: Perbesar video fullscreen.\n- SponsorBlock Integration: Lewat iklan sponsor otomatis.\n\nCatatan: Aplikasi ini Membutuhkan Aplikasi (MicroG  Service) untuk mengaktifkan Youtube Premium,Jika Tidak Akan Terjadi Forclose.')"
+        style="cursor:pointer;font-size:20px;color:#ff00ff;"></i>
+    </div>
+        <!-- MicroG -->
+    <div class="apk-item" data-name="microg service">
+      <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/b9a8981007bb7615d0d84240fcc0606cf0b89610a9a407f3eb7170d8301a9a21_200.jpeg" alt="GbWhatsApp">
+      <div style="flex:1;">
+        <div style="font-weight:bold;color:#00fff6;">microG Service</div>
+        <div style="font-size:12px;opacity:0.8;">Versi 0.3.1.4.240913 • 35.52 MB</div>
+      </div>
+      <a download style="color:#00fff6;font-size:20px;"><i class="fas fa-download" onclick="autoDownload('https://download2358.mediafire.com/ub31yhflreygJVzdCjY9-ci3nJXRySmPnsX0NvTJIwgLhI1fPYYK6TCU9QKGQOicTwCXH60RsXPhAG_XgYeVMLxVV4LXZihb8cUTkY2P9mgddCdMcPk-Y2uMoPlobNq6nBgwBiEtFopxuUfP7Go4y5m-R3UhgU4hSQV94RuVr4g/qlx8tovq7vv4jzo/microG+Services.zip')"></i></a>
+      <i class="fas fa-circle-info" onclick="openInfo('microG Service','Versi 0.3.1.4.240913:\n\nPassword File:HALO\n\nFitur Utama:\n- Pengganti layanan Google Play Services yang ringan.\n- Memungkinkan aplikasi Android yang biasanya butuh Google Play tetap berjalan.\n- Mendukung login akun Google tanpa menginstal Play Services resmi.\n- Meminimalkan penggunaan baterai dan ruang penyimpanan.\n- Lebih aman untuk privasi karena tidak mengirim data ke server Google secara default.\n- Cocok untuk ROM custom atau perangkat tanpa Google Services.\n\nCatatan:\n- microG bukan aplikasi resmi Google, beberapa aplikasi mungkin tidak sepenuhnya kompatibel.\n- Perlu pengaturan tambahan untuk beberapa fitur seperti Maps, push notification, dan login akun.')"
+        style="cursor:pointer;font-size:20px;color:#ff00ff;"></i>
+    </div>
+        <!-- minecraft -->
+    <div class="apk-item" data-name="minecraft patch">
+      <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/380d555b5368c115ba5fc2dbc0992a15.jpg" alt="GbWhatsApp">
+      <div style="flex:1;">
+        <div style="font-weight:bold;color:#00fff6;">Minecraft Patch</div>
+        <div style="font-size:12px;opacity:0.8;">Versi 1.21.130.3 • 418.61 MB</div>
+      </div>
+      <a download style="color:#00fff6;font-size:20px;"><i class="fas fa-download" onclick="autoDownload('https://download2448.mediafire.com/v9ti6yt8sdygN4a4fH9aFywr2c_UlNqK_T9UU7Bk0e2XjXKHB1AgSjOeIYr4dQnun82e0VO-Emgi2EA24S4Tgwv01fflVYXeNcU55IZU_i1Rdrwgxwf-r-ba8bIldZ8wzpSxXpnFgA3d3S-ooBHCGvAmk4DaB180v5D9fHXjNV4/8q27oc3en5f5g08/SUBS+SaifalCraft+MCPE-Patched-No-Music-64bit-32bit-1.21.130.apk.zip')"></i></a>
+      <i class="fas fa-circle-info" onclick="openInfo('Minecraft Patch','Versi 1.21.130.3:\n\nFitur Utama:\n- Perbaikan bug di berbagai platform untuk gameplay lebih stabil.\n- Optimisasi performa untuk frame rate lebih smooth.\n- Update blok, item, dan mobs terbaru.\n- Perbaikan crash saat membuka dunia tertentu.\n- Perbaikan rendering grafis dan tekstur.\n- Perbaikan multiplayer agar koneksi lebih stabil.\n- Beberapa fitur minor baru seperti tweaks UI dan kontrol lebih responsif.\n\nCatatan:\n- Patch ini biasanya kompatibel dengan versi resmi Minecraft.\n- Sebaiknya backup world sebelum menginstal patch.')"
+        style="cursor:pointer;font-size:20px;color:#ff00ff;"></i>
+    </div>    <!-- GB WhatsApp -->
+    <div class="apk-item" data-name="gbwhatsapp">
+      <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/gbwa-mas-apk.png" alt="GbWhatsApp">
+      <div style="flex:1;">
+        <div style="font-weight:bold;color:#00fff6;">GbWhatsApp</div>
+        <div style="font-size:12px;opacity:0.8;">Versi 2.25.28.79 • 112 MB</div>
+      </div>
+      <a download style="color:#00fff6;font-size:20px;"><i class="fas fa-download" onclick="autoDownload('https://upfileapp.9aleh.com/file/2024/gbact/GBWhatsApp_Mas_v24.35.apk')"></i></a>
+      <i class="fas fa-circle-info" onclick="openInfo(
+        'GbWhatsApp',
+        'Versi 2.25.28.79:\n\n- Fitur Anti-Ban\n- Opsi privasi lengkap (centang biru, last seen, typing)\n- UI & tema diperbarui\n- Pengiriman media berkualitas\n- Perbaikan bug & peningkatan stabilitas\n\nCatatan: Aplikasi tidak resmi, risiko banned akun tetap ada.')"
+        style="cursor:pointer;font-size:20px;color:#ff00ff;"></i>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Info APK -->
+<div id="apkModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(6px);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#000;padding:25px;border-radius:18px;max-width:500px;width:90%;box-shadow:0 0 20px #00fff6;overflow-y:auto;max-height:80vh;">
+    <h3 id="apkTitle" style="color:#00fff6;"></h3>
+    <p id="apkDesc" style="color:#fff;opacity:0.9;white-space:pre-line;"></p>
+    <button onclick="closeInfo()" style="margin-top:15px;padding:10px 18px;border:none;border-radius:10px;background:#00fff6;color:#000;font-weight:bold;cursor:pointer;">Tutup</button>
+  </div>
 </div>
   <footer class="site-footer">
   <p>Supported Programming</p>
@@ -392,6 +602,32 @@ filter: drop-shadow(0 0 6px #00fff6);
 <script>
 function toggleMenu(){
   document.getElementById("sideMenu").classList.toggle("active");
+}
+function searchAPK(){
+  let input = document.getElementById('searchApk').value.toLowerCase();
+  let items = document.querySelectorAll('.apk-item');
+  items.forEach(item => {
+    let name = item.getAttribute('data-name');
+    item.style.display = name.includes(input) ? 'flex' : 'none';
+  });
+}
+
+function openInfo(title, desc){
+  document.getElementById('apkTitle').innerText = title;
+  document.getElementById('apkDesc').innerText = desc;
+  document.getElementById('apkModal').style.display = 'flex';
+}
+
+function closeInfo(){
+  document.getElementById('apkModal').style.display = 'none';
+}
+function autoDownload(url) {
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = '';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 </script>
 </html>
