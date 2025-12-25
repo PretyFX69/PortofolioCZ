@@ -657,6 +657,68 @@ filter: drop-shadow(0 0 6px #00fff6);
   object-fit:cover;
   box-shadow:0 0 12px rgba(0,255,255,.45);
 }
+.profile-banner {
+  width: 100%;             /* lebar banner */
+  max-width: 400px;
+  height: 200px;          /* tinggi banner */
+  margin: 0 auto 30px;
+  background: url('https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/coding.jpg') center/cover no-repeat; /* gambar background */
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 5px #00fff6;
+  border:1px solid #00fff6;
+}
+
+/* Foto profil lingkaran menonjol */
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border:1px solid #00fff6;
+  box-shadow: 0 0 12px #00fff6;
+  position: absolute;
+  bottom: -20px; /* sedikit menonjol keluar */
+  overflow:hidden; box-shadow:0 0 5px #00fff6;
+  
+}
+#lightboxModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#lightboxModal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 25px #00fff6;
+}
+
+#lightboxModal .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px;
+  color: #ff00ff;
+  cursor: pointer;
+  font-weight: bold;
+  background: rgba(0,0,0,0.4);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>
 </head>
 <body>
@@ -709,25 +771,11 @@ filter: drop-shadow(0 0 6px #00fff6);
     <span class="online"></span> System Active • CyberZain
   </div>
 </div>
-  <!-- ===== Hamburger Menu (Fixed) ===== -->
-<div class="menu-btn" onclick="togglePanel()">
-  <i class="fas fa-bars"></i>
+<div id="contact" class="main-content">
+<div class="profile-banner">
+  <img class="profile-pic" src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/%2B62%20857-0071-1112%2020251210_195520.jpg" alt="CyberZain Logo">
 </div>
 
-<nav class="side-menu" id="sideMenu">
- <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-  <a href="#projects">Projects</a>
-   <a href="#Download">Download Apk</a>
-</nav>
-<!-- Futuristic Welcome Text -->
-
-<!-- Main Profile Section -->
-<div id="contact" class="main-content">
-  <div class="logo-circle">
-    <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/%2B62%20857-0071-1112%2020251210_195520.jpg" alt="CyberZain Logo">
-  </div>
   <footer  class="site-footer">
   <p>Contact Me</p>
   <a href="https://github.com/pretyfx69" target="_blank"><i class="fab fa-github"></i></a>
@@ -794,34 +842,41 @@ filter: drop-shadow(0 0 6px #00fff6);
   <h2>Kebutuhan Pribadi Anda</h2>
   </div>
   <div class="projects">
-    <a href="https://coin-tracker-bice-kappa.vercel.app/" class="project-card" target="_blank">
-      <img src="https://image.thum.io/get/https://coin-tracker-bice-kappa.vercel.app/" alt="Coin Tracker">
-        <div class="project-info">
-    <h3>Login Panel Pterodactyl</h3>
-    <span class="project-tag">Responsive</span>
-  </div>
-  </a>
-      <a href="https://otp.ditznesia.id/" class="project-card" target="_blank">
-      <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/Screenshot_20251218-170320.jpg" alt="Coin Tracker">
-        <div class="project-info">
-    <h3>Beli Nokos Murah? Disini aja</h3>
-    <span class="project-tag">Responsive</span>
+    <a class="project-card" data-link="https://coin-tracker-bice-kappa.vercel.app/" class="project-card">
+    <img src="https://image.thum.io/get/https://coin-tracker-bice-kappa.vercel.app/" alt="Coin Tracker">
+    <div class="project-info">
+      <h3>Login Panel Pterodactyl</h3>
+      <span  class="project-tag">Responsive</span>
     </div>
     </a>
-    <a href="https://pretyfx69.github.io/Music-CyberZain/" class="project-card" target="_blank">
-      <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251210_194955.jpg" alt="QR Code Generator">
-        <div class="project-info">
-    <h3>Music List CyberZain</h3>
-    <span class="project-tag">Responsive</span>
+    <a class="project-card" data-link="https://otp.ditznesia.id/">
+    <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/Screenshot_20251218-170320.jpg" alt="Coin Tracker">
+    <div class="project-info">
+      <h3>Beli Nokos Murah? Disini aja</h3>
+      <span  class="project-tag">Responsive</span>
     </div>
     </a>
-    <a href="https://pretyfx69.github.io/Assistant-AI/" class="project-card" target="_blank">
-      <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251210_195400.jpg" alt="Color Code">
-        <div class="project-info">
-    <h3>Assistant-AI Tanya apa aja</h3>
-    <span class="project-tag">Responsive</span>
+        <a class="project-card" data-link="https://pretyfx69.github.io/Music-CyberZain/">
+    <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251210_194955.jpg" alt="Coin Tracker">
+    <div class="project-info">
+      <h3>Music List CyberZain</h3>
+      <span  class="project-tag">Responsive</span>
     </div>
-      </a>
+    </a>
+        <a class="project-card" data-link="https://pretyfx69.github.io/Assistant-AI/">
+    <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251210_195400.jpg" alt="Coin Tracker">
+    <div class="project-info">
+      <h3>Assistant-AI Tanya apa ajal</h3>
+      <span  class="project-tag">Responsive</span>
+    </div>
+    </a>
+        <a class="project-card" data-link="https://kepo.id/">
+    <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251225-221650.jpg" alt="Coin Tracker">
+    <div class="project-info">
+      <h3>Mau Top Up Murah? Disini aja</h3>
+      <span  class="project-tag">Responsive</span>
+    </div>
+    </a>
 </div>
 </div>
 <section id="apk-download" style="max-width:900px;margin:60px auto;padding:20px;">
@@ -932,7 +987,14 @@ filter: drop-shadow(0 0 6px #00fff6);
     <button onclick="closeInfo()" style="margin-top:15px;padding:10px 18px;border:none;border-radius:10px;background:#00fff6;color:#000;font-weight:bold;cursor:pointer;">Tutup</button>
   </div>
 </div>
-
+  </div>
+</div>
+</div>
+<!-- Modal Lightbox -->
+<div id="lightboxModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:10000;align-items:center;justify-content:center;">
+  <span class="close-btn" style="position:absolute; top:10px; right:20px; font-size:36px; cursor:pointer; color:#fff;">&times;</span>
+  <img src="" alt="Preview" style="max-width:90%; max-height:90%; border-radius:12px; box-shadow:0 0 25px #00fff6;">
+</div>
   <footer class="site-footer">
   <p>Supported Programming</p>
 
@@ -1025,6 +1087,45 @@ window.addEventListener("load",()=>{
   setTimeout(()=>{
     document.getElementById("panelMenu").classList.add("active");
   },1200);
+});
+// buat modal di body
+document.addEventListener('DOMContentLoaded', () => {
+  const lightbox = document.getElementById('lightboxModal');
+  const lightboxImg = lightbox.querySelector('img');
+  const closeBtn = lightbox.querySelector('.close-btn');
+
+  const projectCards = document.querySelectorAll('.project-card');
+
+  projectCards.forEach(card => {
+    const img = card.querySelector('img');
+    const tag = card.querySelector('.project-tag');
+    const link = card.getAttribute('data-link');
+
+    // Klik gambar → buka lightbox
+    if(img) {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', (e) => {
+        e.preventDefault();
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    }
+
+    // Klik span → langsung ke web
+    if(tag && link) {
+      tag.style.cursor = 'pointer';
+      tag.addEventListener('click', (e) => {
+        e.stopPropagation(); // supaya klik span tidak memicu lightbox
+        window.open(link, '_blank'); // buka di tab baru
+      });
+    }
+  });
+
+  // Close lightbox
+  closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) lightbox.style.display = 'none';
+  });
 });
 </script>
 </html>
