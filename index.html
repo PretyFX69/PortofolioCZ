@@ -719,6 +719,189 @@ filter: drop-shadow(0 0 6px #00fff6);
   align-items: center;
   justify-content: center;
 }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .product-card {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #00fff6;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 0 12px #00fff6;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+  }
+
+  .product-info {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .product-info h3 {
+    margin: 1px 0 5px;
+    font-size: 18px;
+    color: #00fff6;
+  }
+
+  .product-info p {
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  .product-info .price {
+    margin-top: 8px;
+    font-weight: bold;
+    color: #00fff6;
+  }
+
+  /* Lightbox overlay */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    flex-direction: column;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 15px;
+    box-shadow: 0 0 30px #00fff6;
+    transition: transform 0.3s;
+  }
+
+
+
+  @media (max-width: 500px) {
+    .product-card img {
+      height: 140px;
+    }
+  }
+  /* ===== STORE PRODUCT CARD ===== */
+.store-card{
+  max-width:320px;
+  margin:30px auto;
+  background:rgba(0,0,0,.65);
+  backdrop-filter:blur(14px);
+  border-radius:20px;
+  padding:16px;
+  box-shadow:0 0 25px rgba(255,0,0,.45);
+  border:1px solid rgba(255,0,0,.4);
+}
+
+/* IMAGE */
+.store-image{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+}
+.store-image img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+.store-image span{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.45);
+  font-weight:700;
+  color: #ff4d4d;
+  text-shadow: 0 0 10px #ff0000;
+}
+
+/* INFO */
+.store-info{
+  text-align:center;
+  padding-top:14px;
+}
+.store-info h3{
+  margin:6px 0;
+  color:#ffb3b3;
+}
+.store-info p{
+  font-size:14px;
+  opacity:.8;
+}
+.price{
+  margin:10px 0;
+  font-weight:700;
+  color:#ff4d4d;
+}
+
+/* BUTTON */
+.order-btn{
+  display:block;          /* PENTING */
+  width:90%;
+  padding:14px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#ff1a1a,#7a0000);
+  color:#fff !important;  /* PENTING */
+  font-weight:700;
+  text-align:center;      /* PENTING */
+  text-decoration:none;   /* HILANGKAN GARIS BAWAH */
+  box-shadow:0 0 18px rgba(255,0,0,.6);
+  cursor:pointer;
+}
+#imgLightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.95);
+  z-index:10000;
+  align-items:center;
+  justify-content:center;
+}
+#imgLightbox img{
+  max-width:90%;
+  max-height:85%;
+  border-radius:14px;
+  box-shadow:0 0 10px #ffffff;
+}
+.store-card.cyan{
+  border:1px solid rgba(0,255,246,.55);
+  box-shadow:0 0 30px rgba(0,255,246,.35);
+}
+
+.store-card.cyan h3,
+.store-card.cyan .price{
+  color:#00fff6;
+}
+
+.store-card.cyan .store-image span{
+  color:#00fff6;
+  text-shadow:0 0 10px #00fff6;
+}
+
+.store-card.cyan .order-btn{
+  background:linear-gradient(135deg,#00fff6,#009e9a);
+  box-shadow:0 0 25px rgba(0,255,246,.6);
+}
+/* DEFAULT (MERAH) */
 </style>
 </head>
 <body>
@@ -765,8 +948,11 @@ filter: drop-shadow(0 0 6px #00fff6);
     <div class="panel-item" data-target="Download">
       <i class="fas fa-download"></i><span>Download</span>
     </div>
-  </div>
-
+        <div class="panel-item" data-target="Product">
+<i class="fas fa-cart-shopping"></i>
+<span>Product</span>
+</div>
+</div>
   <div class="panel-footer">
     <span class="online"></span> System Active • CyberZain
   </div>
@@ -789,12 +975,12 @@ filter: drop-shadow(0 0 6px #00fff6);
   <!-- Stats Section -->
   <div class="stats-container">
     <div class="stat-box">
-      <div class="stat-number">150+</div>
-      <div class="stat-label">Followers</div>
+      <div class="stat-number">16</div>
+      <div class="stat-label">Years Ago</div>
     </div>
     <div class="stat-box">
-      <div class="stat-number">10+</div>
-      <div class="stat-label">Projects</div>
+      <div class="stat-number">07-15-2009</div>
+      <div class="stat-label">birthday date</div>
     </div>
     <div class="stat-box">
       <div class="stat-number">3</div>
@@ -846,35 +1032,35 @@ filter: drop-shadow(0 0 6px #00fff6);
     <img src="https://image.thum.io/get/https://coin-tracker-bice-kappa.vercel.app/" alt="Coin Tracker">
     <div class="project-info">
       <h3>Login Panel Pterodactyl</h3>
-      <span  class="project-tag">Responsive</span>
+      <span  class="project-tag">Open Website</span>
     </div>
     </a>
     <a class="project-card" data-link="https://otp.ditznesia.id/">
     <img src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/Screenshot_20251218-170320.jpg" alt="Coin Tracker">
     <div class="project-info">
       <h3>Beli Nokos Murah? Disini aja</h3>
-      <span  class="project-tag">Responsive</span>
+      <span  class="project-tag">Open Website</span>
     </div>
     </a>
         <a class="project-card" data-link="https://pretyfx69.github.io/Music-CyberZain/">
     <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251210_194955.jpg" alt="Coin Tracker">
     <div class="project-info">
       <h3>Music List CyberZain</h3>
-      <span  class="project-tag">Responsive</span>
+      <span  class="project-tag">Open Website</span>
     </div>
     </a>
         <a class="project-card" data-link="https://pretyfx69.github.io/Assistant-AI/">
     <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251210_195400.jpg" alt="Coin Tracker">
     <div class="project-info">
       <h3>Assistant-AI Tanya apa ajal</h3>
-      <span  class="project-tag">Responsive</span>
+      <span  class="project-tag">Open Website</span>
     </div>
     </a>
         <a class="project-card" data-link="https://kepo.id/">
     <img src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/Screenshot_20251225-221650.jpg" alt="Coin Tracker">
     <div class="project-info">
       <h3>Mau Top Up Murah? Disini aja</h3>
-      <span  class="project-tag">Responsive</span>
+      <span  class="project-tag">Open Website</span>
     </div>
     </a>
 </div>
@@ -986,10 +1172,78 @@ filter: drop-shadow(0 0 6px #00fff6);
     <p id="apkDesc" style="color:#fff;opacity:0.9;white-space:pre-line;"></p>
     <button onclick="closeInfo()" style="margin-top:15px;padding:10px 18px;border:none;border-radius:10px;background:#00fff6;color:#000;font-weight:bold;cursor:pointer;">Tutup</button>
   </div>
-</div>
   </div>
+<div id="Product" class="projects-section">
+  <h2>Product Yang Saya Jual</h2>
+  </div>
+<div class="store-wrapper">
+    <div class="store-card cyan">
+    <div class="store-image">
+      <img
+        src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/install-pterodactyl-panel-for-you.png"
+        alt="Worm GPT Cyan">
+      <span>Click Preview</span>
+    </div>
+    <div class="store-info">
+      <h3>Server Panel Pterodactyl</h3>
+      <p>web panel open-source untuk mengelola server menggunakan script untuk mengaktifkan bot</p>
+      <div class="price">100% Aman</div>
+
+      <a href="https://example.com"
+         target="_blank"
+         class="order-btn">Lihat Info Produk
+      </a>
+    </div>
+  </div>
+  <!-- 🔴 PRODUCT MERAH -->
+  <div class="store-card red">
+    <div class="store-image">
+      <img
+        src="https://raw.githubusercontent.com/PretyFX69/music-files/refs/heads/main/wormgpt-is-a-chatgpt-alternative-with-no-ethical-boundaries_5qcv.jpg"
+        alt="Worm GPT Red">
+      <span>Click Preview</span>
+    </div>
+
+    <div class="store-info">
+      <h3>Worm-GPT Chat & Responsive</h3>
+      <p>Premium Ai Worm-GPT Ilegal anti bantahan & bebas bertanya bebas membuat projeck tanpa melihat ilegal ataupun tidak nya</p>
+      <div class="price">100% Aman</div>
+
+      <a href="https://example.com"
+         target="_blank"
+         class="order-btn">
+        🛡 Lihat Info Produk
+      </a>
+    </div>
+    </div>
+      <!-- 🔵 PRODUCT CYAN -->
+  <div class="store-card cyan">
+    <div class="store-image">
+      <img
+        src="https://raw.githubusercontent.com/PretyFX69/music-files2/refs/heads/main/%2B62%20857-0071-1112%2020251210_195520.jpg"
+        alt="Worm GPT Cyan">
+      <span>Click Preview</span>
+    </div>
+    <div class="store-info">
+      <h3>Coming soon</h3>
+      <p>Full tools + priority response</p>
+      <div class="price">Rp 250.000</div>
+
+      <a href="https://example.com"
+         target="_blank"
+         class="order-btn">Lihat Info Produk
+      </a>
 </div>
 </div>
+<div id="imgLightbox">
+  <img id="imgPreview">
+</div>
+<div id="lightbox" class="lightbox">
+  <img id="lightbox-img" src="">
+</div>
+  <img id="lightbox-img" src="">
+</div>
+    </div>
 <!-- Modal Lightbox -->
 <div id="lightboxModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:10000;align-items:center;justify-content:center;">
   <span class="close-btn" style="position:absolute; top:10px; right:20px; font-size:36px; cursor:pointer; color:#fff;">&times;</span>
@@ -1126,6 +1380,74 @@ document.addEventListener('DOMContentLoaded', () => {
   lightbox.addEventListener('click', (e) => {
     if(e.target === lightbox) lightbox.style.display = 'none';
   });
+});
+function openLightbox(src) {
+  const lightbox = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+
+  img.src = src;
+  lightbox.style.display = 'flex';
+
+  // Klik area gelap = tutup
+  lightbox.onclick = (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+    }
+  };
+}
+/* =========================
+   PRODUCT CARD INTERACTION
+========================= */
+document.querySelectorAll('.product-card').forEach(card => {
+  const img = card.querySelector('.product-img');
+  const btn = card.querySelector('.product-link');
+  const link = card.dataset.link;
+
+  // Klik gambar → lightbox
+  if (img) {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', e => {
+      e.stopPropagation();
+      openLightbox(img.src);
+    });
+  }
+
+  // Klik tombol Responsive → buka web
+  if (btn && link) {
+    btn.style.cursor = 'pointer';
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      window.open(link, '_blank');
+    });
+  }
+});
+const storeLightbox = document.getElementById("imgLightbox");
+const storePreview  = document.getElementById("imgPreview");
+
+document.querySelectorAll(".store-image").forEach(item=>{
+  item.addEventListener("click", ()=>{
+    const img = item.querySelector("img");
+    if(!img) return;
+
+    // set gambar
+    storePreview.src = img.src;
+
+    // reset warna
+    storeLightbox.classList.remove("cyan");
+
+    // kalau blok cyan → ganti warna lightbox
+    if(item.classList.contains("cyan")){
+      storeLightbox.classList.add("cyan");
+    }
+
+    storeLightbox.style.display = "flex";
+  });
+});
+
+storeLightbox.addEventListener("click", e=>{
+  if(e.target === storeLightbox){
+    storeLightbox.style.display = "none";
+  }
 });
 </script>
 </html>
