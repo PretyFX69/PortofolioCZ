@@ -555,7 +555,6 @@ filter: drop-shadow(0 0 6px #00fff6);
 .project-video{
   position:relative;
   width:100%;
-  aspect-ratio:16/9;
   border-radius:14px;
   overflow:hidden;
   box-shadow:0 0 18px rgba(0,255,255,.45);
@@ -901,6 +900,29 @@ filter: drop-shadow(0 0 6px #00fff6);
   background:linear-gradient(135deg,#00fff6,#009e9a);
   box-shadow:0 0 25px rgba(0,255,246,.6);
 }
+.store-wrapper {
+  display: flex;              /* Susun card horizontal */
+  gap: 18px;                  /* Jarak antar card */
+  overflow-x: auto;           /* Scroll horizontal */
+  padding: 15px 10px 20px;
+  scroll-behavior: smooth;    /* Scroll halus */
+  scroll-snap-type: x mandatory; /* Snap ke awal card */
+}
+
+.store-wrapper::-webkit-scrollbar {
+  height: 6px;
+  background: transparent;
+}
+.store-wrapper::-webkit-scrollbar-thumb {
+  background: #00fff6;
+  border-radius: 10px;
+}
+
+/* Card tetap ukuran sama */
+.store-card {
+  flex-shrink: 0;             /* Jangan mengecil saat scroll */
+  scroll-snap-align: start;   /* Snap otomatis */
+}
 /* DEFAULT (MERAH) */
 </style>
 </head>
@@ -1186,7 +1208,7 @@ filter: drop-shadow(0 0 6px #00fff6);
     </div>
     <div class="store-info">
       <h3>Server Panel Pterodactyl</h3>
-      <p>web panel open-source untuk mengelola server menggunakan script untuk mengaktifkan bot</p>
+      <p>web panel Pterodactyl open-source untuk mengelola server menggunakan script untuk mengaktifkan bot</p>
       <div class="price">100% Aman</div>
 
       <a href="https://example.com"
@@ -1209,7 +1231,7 @@ filter: drop-shadow(0 0 6px #00fff6);
       <p>Premium Ai Worm-GPT Ilegal anti bantahan & bebas bertanya bebas membuat projeck tanpa melihat ilegal ataupun tidak nya</p>
       <div class="price">100% Aman</div>
 
-      <a href="https://pretyfx68.github.io/PortofolioCZ-WormGPT/"
+      <a href="https://example.com"
          target="_blank"
          class="order-btn">
         🛡 Lihat Info Produk
